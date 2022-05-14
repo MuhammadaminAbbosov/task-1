@@ -28,10 +28,8 @@ const Header = () => {
   const [toggle] = useAudio(audiomp);
 
   const [menuOpen, setMenuOpen] = useState(false)
-  console.log(menuOpen)
-
   return (
-    <Wrapper menuOpen={menuOpen}>
+    <Wrapper menuOpen={menuOpen} setMenuOpen={setMenuOpen}>
       <img src={ReactLogo} alt="" />
       <nav>
         <NavLink onClick={toggle} to={"/"}>
@@ -116,11 +114,9 @@ const Wrapper = styled.div`
     .menu-icon {
       display: block !important;
     }
-
     .menu {
-      display: block;
+      display: block !important;
     }
-
     nav {
       display: none;
     }
@@ -133,8 +129,7 @@ const Wrapper = styled.div`
   }
 
   .menu {
-    display: flex;
-    flex-direction: column;
+    display: none;
     transition: 0.4s;
     transform: ${({menuOpen}) => menuOpen ? "translateX(0)" : "translateX(400px)"};
 
@@ -147,6 +142,7 @@ const Wrapper = styled.div`
 
     padding: 10px;
     a {
+      display: block;
       text-decoration: none;
       color: black;
       padding: 6px 12px;
@@ -154,6 +150,7 @@ const Wrapper = styled.div`
       line-height: 25px;
       border-radius: 4px;
       color: white;
+      margin: 10px 0;
 
       &:hover {
         background-color: #ddd;
